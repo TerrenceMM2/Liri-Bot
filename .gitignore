@@ -1,4 +1,5 @@
 node_modules
 .DS_Store
 .env
-output.json
+spotify_output.json
+bands_output.json

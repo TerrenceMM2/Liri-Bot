@@ -3,8 +3,11 @@ require("dotenv").config();
 var fs = require("fs");
 var keys = require("./keys.js");
 var Spotify = require('./node_modules/node-spotify-api');
+var axios = require("./node_modules/axios");
+var moment = require("./node_modules/moment");
 
 var spotify = new Spotify(keys.spotify);
+var bandsKey = process.env.BANDS_ID;
 
 // LIRI Commands: concert-this, spotify-this-song, movie-this, do-what-it-says
 var command = process.argv[2];
@@ -64,11 +67,33 @@ function searchImdb(str) {
 // Axios API Info: https://www.npmjs.com/package/axios
 function searchConcerts(str) {
     console.log("You've searched for " + str + " using Bands in Town");
+    axios.get("http://rest.bandsintown.com/artists/" + search + "/events?app_id=" + bandsKey).then(function (response) {
+        fs.writeFile("bands_output.json", JSON.stringify(response.data), function (err) {
+            if (err) {
+                return console.log(err);
+            }
+        });
+
+        if (response.data){
+            console.log("Sorry, but it doesn't look like this artist has any upcoming events.")
+        };
+
+        for (var j = 0; j < response.data.length; j++) {
+            var eventNum = j + 1;
+            console.log("------------- Upcoming Event #" + eventNum + " -------------");
+            console.log("Venue Name: " + response.data[j].venue.name);
+            console.log("Venue Location: " + response.data[j].venue.city + "," + response.data[j].venue.region, response.data[j].venue.country);
+            console.log("Event Date: " + moment(response.data[j].datetime).format("MM/DD/YYYY"));
+        }
+        // console.log(response);
+    }).catch(function (err) {
+        console.log(err);
+    });
 }
 
 function doIt() {
     console.log("Your wish is my command");
-    fs.readFile("random.txt", "utf8", function(err, data) {
+    fs.readFile("random.txt", "utf8", function (err, data) {
         if (err) {
             return console.log(err);
         }
