@@ -1,13 +1,15 @@
 require("dotenv").config();
 
 var fs = require("fs");
+var cTable = require('console.table');
 var keys = require("./keys.js");
 var Spotify = require('./node_modules/node-spotify-api');
 var axios = require("./node_modules/axios");
 var moment = require("./node_modules/moment");
 
 var spotify = new Spotify(keys.spotify);
-var bandsKey = process.env.BANDS_ID;
+var bandsKey = process.env.BANDS_KEY;
+var omdbKey = process.env.OMDB_KEY;
 
 // LIRI Commands: concert-this, spotify-this-song, movie-this, do-what-it-says
 var command = process.argv[2];
@@ -61,6 +63,32 @@ switch (command) {
 // Axios API Info: https://www.npmjs.com/package/axios
 function searchImdb(str) {
     console.log("You've searched for " + str + " using IMDB.");
+    axios.get("http://www.omdbapi.com/?t=" + search + "&apikey=" + omdbKey).then(function (response) {
+        fs.writeFile("omdb_output.json", JSON.stringify(response.data), function (err) {
+            if (err) {
+                return console.log(err);
+            }
+        });
+
+        if (response.data.Error) {
+            console.log(response.data.Error);
+        };
+
+        // NPM Console.Table - https://www.npmjs.com/package/console.table
+        var values = [
+            ["Categories", "Movie Infomation"],
+            ["Title", response.data.Title],
+            ["Release Year", moment(response.data.Released, "DD MMM YYYY").format("YYYY")],
+            ["IMDB Rating", response.data.imdbRating],
+            ["Rotten Tomatoes Rating", response.data.Ratings[1].Value],
+            ["Country Produced", response.data.Country],
+            ["Movie Language", response.data.Language],
+            ["Plot Summary", response.data.Plot],
+            ["Starring", response.data.Actors]
+        ];
+
+        console.table(values[0], values.slice(1));
+    })
 }
 
 // Bands in Town API Info: https://www.artists.bandsintown.com/bandsintown-api
@@ -74,7 +102,7 @@ function searchConcerts(str) {
             }
         });
 
-        if (response.data){
+        if (response.data) {
             console.log("Sorry, but it doesn't look like this artist has any upcoming events.")
         };
 
