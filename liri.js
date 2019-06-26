@@ -103,5 +103,6 @@ function searchSpotify(str) {
         })
         .catch(function (err) {
             console.log(err);
+            searchSpotify("The Sign Ace of Base");
         });
 };
