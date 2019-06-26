@@ -13,16 +13,16 @@ var processArgs = process.argv;
 var search = "";
 var querySearchItem = "";
 
-for (var i = 2; i < processArgs.length; i++) {
-    if (i > 2 && i < processArgs.length) {
+for (var i = 3; i < processArgs.length; i++) {
+    if (i > 3 && i < processArgs.length) {
         search = search + " " + processArgs[i];
     } else {
         search += processArgs[i];
     };
 };
 
-for (var i = 2; i < processArgs.length; i++) {
-    if (i > 2 && i < processArgs.length) {
+for (var i = 3; i < processArgs.length; i++) {
+    if (i > 3 && i < processArgs.length) {
         querySearchItem = querySearchItem + "+" + processArgs[i];
     } else {
         querySearchItem += processArgs[i];
@@ -54,18 +54,35 @@ switch (command) {
         break;
 }
 
+// OMDB API Info: http://www.omdbapi.com
+// Axios API Info: https://www.npmjs.com/package/axios
 function searchImdb(str) {
     console.log("You've searched for " + str + " using IMDB.");
 }
 
+// Bands in Town API Info: https://www.artists.bandsintown.com/bandsintown-api
+// Axios API Info: https://www.npmjs.com/package/axios
 function searchConcerts(str) {
     console.log("You've searched for " + str + " using Bands in Town");
 }
 
 function doIt() {
     console.log("Your wish is my command");
+    fs.readFile("random.txt", "utf8", function(err, data) {
+        if (err) {
+            return console.log(err);
+        }
+
+        var array = data.split(",");
+
+        command = array[0];
+        search = array[1];
+
+        searchSpotify(search);
+    });
 }
 
+// Spotify API Info: https://www.npmjs.com/package/node-spotify-api
 function searchSpotify(str) {
     spotify
         .search({
