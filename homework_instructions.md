@@ -151,15 +151,15 @@ require("dotenv").config();
 
    * This will show the following information about the song in your terminal/bash window
 
-     * Artist(s)
+     * Artist(s) ***DONE***
 
-     * The song's name
+     * The song's name ***DONE***
 
-     * A preview link of the song from Spotify
+     * A preview link of the song from Spotify ***DONE***
 
-     * The album that the song is from
+     * The album that the song is from ***DONE***
 
-   * If no song is provided then your program will default to "The Sign" by Ace of Base.
+   * If no song is provided then your program will default to "The Sign" by Ace of Base. ***DONE***
 
    * You will utilize the [node-spotify-api](https://www.npmjs.com/package/node-spotify-api) package in order to retrieve song information from the Spotify API.
 
@@ -173,22 +173,22 @@ require("dotenv").config();
 
    * Step Four: On the next screen, scroll down to where you see your client id and client secret. Copy these values down somewhere, you'll need them to use the Spotify API and the [node-spotify-api package](https://www.npmjs.com/package/node-spotify-api).
 
-3. `node liri.js movie-this '<movie name here>'`
+3. `node liri.js movie-this '<movie name here>'` ***DONE***
 
    * This will output the following information to your terminal/bash window:
 
      ```
-       * Title of the movie.
-       * Year the movie came out.
-       * IMDB Rating of the movie.
-       * Rotten Tomatoes Rating of the movie.
-       * Country where the movie was produced.
-       * Language of the movie.
-       * Plot of the movie.
-       * Actors in the movie.
+       * Title of the movie. ***DONE***
+       * Year the movie came out. ***DONE***
+       * IMDB Rating of the movie. ***DONE***
+       * Rotten Tomatoes Rating of the movie. ***DONE***
+       * Country where the movie was produced. ***DONE***
+       * Language of the movie. ***DONE***
+       * Plot of the movie. ***DONE***
+       * Actors in the movie. ***DONE***
      ```
 
-   * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
+   * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.' ***DONE***
 
      * If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>
 
@@ -198,11 +198,12 @@ require("dotenv").config();
 
 4. `node liri.js do-what-it-says`
 
-   * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
+   * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands. ***DONE***
 
-     * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
+     * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`. ***DONE***
 
      * Edit the text in random.txt to test out the feature for movie-this and concert-this.
+     ***DONE***
 
 ### BONUS
 
