@@ -38,4 +38,4 @@ Currently, Liri understand the following commands:
 
 ## Screenshots/GIFs  
 Using Liri to search Spotify for _Digital Love_ by Daft Punk:  
-![Liri searching for "Digital Love" on Spotify](https://github.com/TerrenceMM2/coursework8-liri-node-app/images/liri_song_search.jpg)  
+![Liri searching for "Digital Love" on Spotify](https://github.com/TerrenceMM2/coursework8-liri-node-app/blob/master/images/liri_song_search.JPG)  
