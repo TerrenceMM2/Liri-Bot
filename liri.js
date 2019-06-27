@@ -18,6 +18,7 @@ var processArgs = process.argv;
 var search = "";
 var querySearchItem = "";
 
+// var address = process.argv.slice(2).join(" ");
 for (var i = 3; i < processArgs.length; i++) {
     if (i > 3 && i < processArgs.length) {
         search = search + " " + processArgs[i];
@@ -74,29 +75,31 @@ function searchImdb(str) {
             console.log(response.data.Error);
             searchImdb("Mr. Nobody")
         } else {
+            var results = {
+                title: response.data.Title,
+                year: moment(response.data.Released, "DD MMM YYYY").format("YYYY"),
+                imdbRating: response.data.imdbRating,
+                rottenRating: response.data.Ratings[1].Value,
+                countryProduced: response.data.Country,
+                language: response.data.Language,
+                plot: response.data.Plot,
+                actors: response.data.Actors
+            }
             // NPM Console.Table - https://www.npmjs.com/package/console.table
             var values = [
-                ["Categories", "Movie Infomation"],
-                ["Title", response.data.Title],
-                ["Release Year", moment(response.data.Released, "DD MMM YYYY").format("YYYY")],
-                ["IMDB Rating", response.data.imdbRating],
-                ["Rotten Tomatoes Rating", response.data.Ratings[1].Value],
-                ["Country Produced", response.data.Country],
-                ["Movie Language", response.data.Language],
-                ["Plot Summary", response.data.Plot],
-                ["Starring", response.data.Actors]
+                ["Categories", "Movie Information"],
+                ["Title", results.title],
+                ["Release Year", results.year],
+                ["IMDB Rating", results.imdbRating],
+                ["Rotten Tomatoes Rating", results.rottenRating],
+                ["Country Produced", results.countryProduced],
+                ["Movie Language", results.language],
+                ["Plot Summary", results.plot],
+                ["Starring", results.actors]
             ];
-
             console.table(values[0], values.slice(1));
-            writeToFile(response.data.Title);
-            writeToFile(moment(response.data.Released, "DD MMM YYYY").format("YYYY"));
-            writeToFile(response.data.imdbRating);
-            writeToFile(response.data.Ratings[1].Value);
-            writeToFile(response.data.Country);
-            writeToFile(response.data.Language);
-            writeToFile(response.data.Plot);
-            writeToFile(response.data.Actors);
-
+            // console.log(JSON.stringify(results, null, 2));
+            writeToFile(results);
         };
 
     }).catch(function (error) {
@@ -121,15 +124,24 @@ function searchConcerts(str) {
         // } else {
         for (var j = 0; j < response.data.length; j++) {
             var eventNum = j + 1;
+            var results = {
+                venueName: response.data[j].venue.name,
+                venueCity: response.data[j].venue.city,
+                venueRegion: response.data[j].venue.region,
+                venueCountry: response.data[j].venue.country,
+                eventDate: moment(response.data[j].datetime).format("MM/DD/YYYY"),
+            };
+
+            var values = [
+                ["", "Details"],
+                ["Venue Name", results.venueName],
+                ["Venue Location", results.venueCity + results.venueRegion + results.venueCountry],
+                ["Event Date", results.eventDate]
+            ];
+            
             console.log("------------- Upcoming Event #" + eventNum + " -------------");
-            console.log("Venue Name: " + response.data[j].venue.name);
-            console.log("Venue Location: " + response.data[j].venue.city + "," + response.data[j].venue.region, response.data[j].venue.country);
-            console.log("Event Date: " + moment(response.data[j].datetime).format("MM/DD/YYYY"));
-            writeToFile(response.data[j].venue.name);
-            writeToFile(response.data[j].venue.city);
-            writeToFile(response.data[j].venue.region);
-            writeToFile(response.data[j].venue.country);
-            writeToFile(moment(response.data[j].datetime).format("MM/DD/YYYY"));
+            console.table(values[0], values.slice(1));
+            writeToFile(results);
         }
     }).catch(function (err) {
         console.log(err);
@@ -176,14 +188,25 @@ function searchSpotify(str) {
                     return console.log(err);
                 }
             });
-            console.log(response.tracks.items[0].artists[0].name); // Artist
-            console.log(response.tracks.items[0].name); // Song Title
-            console.log(response.tracks.items[0].external_urls.spotify); // Song Link
-            console.log(response.tracks.items[0].album.name); // Album Title
-            writeToFile(response.tracks.items[0].artists[0].name);
-            writeToFile(response.tracks.items[0].name);
-            writeToFile(response.tracks.items[0].external_urls.spotify);
-            writeToFile(response.tracks.items[0].album.name);
+
+            var results = {
+                artistName: response.tracks.items[0].artists[0].name,
+                songName: response.tracks.items[0].name,
+                url: response.tracks.items[0].external_urls.spotify,
+                albumName: response.tracks.items[0].album.name
+            };
+
+            var values = [
+                ["Categories", "Song Information"],
+                ["Artist", results.artistName],
+                ["Song", results.songName],
+                ["Album", results.albumName],
+                ["URL", results.url]
+            ];
+
+            console.table(values[0], values.slice(1));
+            // console.log(JSON.stringify(results, null, 2));
+            writeToFile(results);
         })
         .catch(function (err) {
             console.log(err);
@@ -191,9 +214,9 @@ function searchSpotify(str) {
         });
 };
 
-function writeToFile(str) {
+function writeToFile(obj) {
     var timestamp = moment().format('MM.DD.YY - HH:mm:ss');
-    fs.appendFile("log.txt", "[ " + timestamp + " ] " + str + "\r\n", function (err) {
+    fs.appendFile("log.txt", "\r\n" + "[ " + timestamp + " ] : " + command + " : " + search  + "\r\n" + JSON.stringify(obj, null, 2), function (err) {
         if (err) {
             return console.log(err);
         };
