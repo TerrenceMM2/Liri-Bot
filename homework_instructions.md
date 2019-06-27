@@ -211,7 +211,7 @@ require("dotenv").config();
 
 * Make sure you append each command you run to the `log.txt` file. ***DONE***
 
-* Do not overwrite your file each time you run a command.
+* Do not overwrite your file each time you run a command. ***DONE***
 
 ### Reminder: Submission on BCS
 

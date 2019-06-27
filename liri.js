@@ -3,9 +3,10 @@ require("dotenv").config();
 var fs = require("fs");
 var cTable = require('console.table');
 var keys = require("./keys.js");
-var Spotify = require('./node_modules/node-spotify-api');
-var axios = require("./node_modules/axios");
-var moment = require("./node_modules/moment");
+var Spotify = require('node-spotify-api');
+var axios = require("axios");
+var moment = require("moment");
+var inquirer = require('inquirer');
 
 var spotify = new Spotify(keys.spotify);
 var bandsKey = process.env.BANDS_KEY;
@@ -13,59 +14,100 @@ var omdbKey = process.env.OMDB_KEY;
 
 // LIRI Commands: concert-this, spotify-this-song, movie-this, do-what-it-says
 var command = process.argv[2];
-var processArgs = process.argv;
+var search = process.argv.slice(3).join(" ");
 
-var search = "";
-var querySearchItem = "";
+liriCommand(command);
 
-// var address = process.argv.slice(2).join(" ");
-for (var i = 3; i < processArgs.length; i++) {
-    if (i > 3 && i < processArgs.length) {
-        search = search + " " + processArgs[i];
-    } else {
-        search += processArgs[i];
-    };
-};
-
-for (var i = 3; i < processArgs.length; i++) {
-    if (i > 3 && i < processArgs.length) {
-        querySearchItem = querySearchItem + "+" + processArgs[i];
-    } else {
-        querySearchItem += processArgs[i];
-    };
-};
-
-switch (command) {
-    case "concert-this":
-        searchConcerts(search);
-        break;
-    case "spotify-this-song":
-        searchSpotify(search);
-        break;
-    case "movie-this":
-        searchImdb(search);
-        break;
-    case "do-what-it-says":
-        doIt();
-        break;
-    case "help":
-        console.log("==================================== AVAILABLE COMMANDS ====================================");
-        console.log("'concert-this' - Search Band in Town concerts by artist/group.");
-        console.log("'spotify-this-song' - Search Spotify for track information.");
-        console.log("'movie-this' - Search IMDB for movie information.");
-        console.log("'do-what-it-says' - Reads and passes command and value from random.txt file.");
-        break;
-    default:
-        console.log("I'm sorry. I don't understand. Search 'help' for more information.");
-        break;
+function liriAsks() {
+    inquirer.prompt({
+        type: "list",
+        message: "What would you like to search for?",
+        choices: ["Song", "Concert", "Movie"],
+        name: "option"
+    }).then(answers => {
+        switch (answers.option) {
+            case "Song":
+                songSearch();
+                break;
+            case "Movie":
+                movieSearch();
+                break;
+            case "Concert":
+                concertSearch();
+                break;
+        }
+    });
 }
+
+function songSearch() {
+    inquirer.prompt({
+        type: "input",
+        message: "What song would you like to search for? (Ex. 'One More Time')",
+        name: "song",
+    }).then(answers => {
+        search = answers.song;
+        searchSpotify(search);
+    });
+};
+
+function movieSearch() {
+    inquirer.prompt({
+        type: "input",
+        message: "What movie would you like to search for? (Ex. 'The Matrix')",
+        name: "movie",
+    }).then(answers => {
+        search = answers.movie;
+        searchImdb(search);
+    });
+};
+
+function concertSearch() {
+    inquirer.prompt({
+        type: "input",
+        message: "What artist's events would you like to search for? (Ex. 'Daft Punk')",
+        name: "concert",
+    }).then(answers => {
+        search = answers.concert;
+        searchConcerts(search);
+    });
+};
+
+function liriCommand(command) {
+    switch (command) {
+        case "concert-this":
+            searchConcerts(search);
+            break;
+        case "spotify-this-song":
+            searchSpotify(search);
+            break;
+        case "movie-this":
+            searchImdb(search);
+            break;
+        case "do-what-it-says":
+            doIt();
+            break;
+        case "help":
+            console.log("==================================== AVAILABLE COMMANDS ====================================");
+            console.log("'concert-this' - Search Band in Town concerts by artist/group.");
+            console.log("'spotify-this-song' - Search Spotify for track information.");
+            console.log("'movie-this' - Search IMDB for movie information.");
+            console.log("'do-what-it-says' - Reads and passes command and value from random.txt file.");
+            break;
+        case undefined:
+            liriAsks();
+            break;
+        default:
+            console.log("I'm sorry. I don't understand. Search 'help' for more information.");
+            break;
+    }
+};
 
 // OMDB API Info: http://www.omdbapi.com
 // Axios API Info: https://www.npmjs.com/package/axios
 function searchImdb(str) {
     console.log("You've searched for " + str + " using OMDB.");
     axios.get("http://www.omdbapi.com/?t=" + str + "&apikey=" + omdbKey).then(function (response) {
-        fs.writeFile("omdb_output.json", JSON.stringify(response.data), function (err) {
+        fs.writeFile("omdb_output.json", JSON.stringify(response.data, null, 2), function (err) {
             if (err) {
                 return console.log(err);
             }
@@ -98,7 +140,6 @@ function searchImdb(str) {
                 ["Starring", results.actors]
             ];
             console.table(values[0], values.slice(1));
-            // console.log(JSON.stringify(results, null, 2));
             writeToFile(results);
         };
 
@@ -112,37 +153,37 @@ function searchImdb(str) {
 function searchConcerts(str) {
     console.log("You've searched for " + str + " using Bands in Town");
     axios.get("http://rest.bandsintown.com/artists/" + str + "/events?app_id=" + bandsKey).then(function (response) {
-        fs.writeFile("bands_output.json", JSON.stringify(response.data), function (err) {
+        fs.writeFile("bands_output.json", JSON.stringify(response.data, null, 2), function (err) {
             if (err) {
                 return console.log(err);
             }
         });
 
-        // console.log(response.data);
-        // if (response.data) {
-        //     console.log("Sorry, but it doesn't look like this artist has any upcoming events.")
-        // } else {
-        for (var j = 0; j < response.data.length; j++) {
-            var eventNum = j + 1;
-            var results = {
-                venueName: response.data[j].venue.name,
-                venueCity: response.data[j].venue.city,
-                venueRegion: response.data[j].venue.region,
-                venueCountry: response.data[j].venue.country,
-                eventDate: moment(response.data[j].datetime).format("MM/DD/YYYY"),
-            };
+        if (response.data[0] === undefined) {
+            console.log("Sorry, but it doesn't look like this artist has any upcoming events. Please check back later.")
+        } else {
+            for (var j = 0; j < response.data.length; j++) {
+                var eventNum = j + 1;
+                var results = {
+                    venueName: response.data[j].venue.name,
+                    venueCity: response.data[j].venue.city,
+                    venueRegion: response.data[j].venue.region,
+                    venueCountry: response.data[j].venue.country,
+                    eventDate: moment(response.data[j].datetime).format("MM/DD/YYYY"),
+                };
 
-            var values = [
-                ["", "Details"],
-                ["Venue Name", results.venueName],
-                ["Venue Location", results.venueCity + results.venueRegion + results.venueCountry],
-                ["Event Date", results.eventDate]
-            ];
-            
-            console.log("------------- Upcoming Event #" + eventNum + " -------------");
-            console.table(values[0], values.slice(1));
-            writeToFile(results);
-        }
+                var values = [
+                    ["", "Details"],
+                    ["Venue Name", results.venueName],
+                    ["Venue Location", results.venueCity + ", " + results.venueRegion + " " + results.venueCountry],
+                    ["Event Date", results.eventDate]
+                ];
+
+                console.log("==================================== Upcoming Event #" + eventNum + " ====================================");
+                console.table(values[0], values.slice(1));
+                writeToFile(results);
+            }
+        };
     }).catch(function (err) {
         console.log(err);
     });
@@ -183,7 +224,7 @@ function searchSpotify(str) {
             limit: 1
         })
         .then(function (response) {
-            fs.writeFile("spotify_output.json", JSON.stringify(response), function (err) {
+            fs.writeFile("spotify_output.json", JSON.stringify(response, null, 2), function (err) {
                 if (err) {
                     return console.log(err);
                 }
@@ -205,7 +246,6 @@ function searchSpotify(str) {
             ];
 
             console.table(values[0], values.slice(1));
-            // console.log(JSON.stringify(results, null, 2));
             writeToFile(results);
         })
         .catch(function (err) {
@@ -216,7 +256,7 @@ function searchSpotify(str) {
 
 function writeToFile(obj) {
     var timestamp = moment().format('MM.DD.YY - HH:mm:ss');
-    fs.appendFile("log.txt", "\r\n" + "[ " + timestamp + " ] : " + command + " : " + search  + "\r\n" + JSON.stringify(obj, null, 2), function (err) {
+    fs.appendFile("log.txt", "\r\n" + "[ " + timestamp + " ] : " + command + " : " + search + "\r\n" + JSON.stringify(obj, null, 2), function (err) {
         if (err) {
             return console.log(err);
         };
