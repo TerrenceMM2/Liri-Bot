@@ -12,12 +12,12 @@ var spotify = new Spotify(keys.spotify);
 var bandsKey = process.env.BANDS_KEY;
 var omdbKey = process.env.OMDB_KEY;
 
-// LIRI Commands: concert-this, spotify-this-song, movie-this, do-what-it-says
 var command = process.argv[2];
 var search = process.argv.slice(3).join(" ");
 
 liriCommand(command);
 
+// If the user only enters 'node liri', the user will be asked what he/she would like to search for: Movie, Song, or Concert. Additional prompts will follow.
 function liriAsks() {
     inquirer.prompt({
         type: "list",
@@ -39,6 +39,7 @@ function liriAsks() {
     });
 }
 
+// If the user selects "Song", the user is prompted to enter a song and the Spotify API is queried
 function songSearch() {
     inquirer.prompt({
         type: "input",
@@ -50,6 +51,7 @@ function songSearch() {
     });
 };
 
+// If the user selects "Movie", the user is prompted to enter a movie and the OMDB API is queried
 function movieSearch() {
     inquirer.prompt({
         type: "input",
@@ -61,6 +63,7 @@ function movieSearch() {
     });
 };
 
+// If the user selects "Concert", the user is prompted to enter an artist and the Bands in Town API is queried
 function concertSearch() {
     inquirer.prompt({
         type: "input",
@@ -72,6 +75,9 @@ function concertSearch() {
     });
 };
 
+// The initial command run when 'node liri' is executed.
+// Based on the additional user input, another function is executed.
+// If none of the parameters passed are recognized, liri alerts the user to add 'help' to understand what commands are available.
 function liriCommand(command) {
     switch (command) {
         case "concert-this":
@@ -189,6 +195,7 @@ function searchConcerts(str) {
     });
 }
 
+// Executed from the 'do-what-it-says" command
 function doIt() {
     console.log("Your wish is my command");
     fs.readFile("random.txt", "utf8", function (err, data) {
@@ -254,6 +261,8 @@ function searchSpotify(str) {
         });
 };
 
+// Appends log.txt file with results object.
+// Adds timestamp, the command executed, and the search value.
 function writeToFile(obj) {
     var timestamp = moment().format('MM.DD.YY - HH:mm:ss');
     fs.appendFile("log.txt", "\r\n" + "[ " + timestamp + " ] : " + command + " : " + search + "\r\n" + JSON.stringify(obj, null, 2), function (err) {
@@ -261,4 +270,4 @@ function writeToFile(obj) {
             return console.log(err);
         };
     });
-}
+};
