@@ -35,7 +35,10 @@ Currently, Liri understand the following commands:
 * `help`  
 
 #### `spotify-this-song`  
-Will return the top search on Spotify. If you are looking for a song by a specific artist (for example, "One More Time" by Daft Punk, not "One More Time" by Britney Spears), include the artist's name.
+Will return the top search on Spotify.
+
+If you are looking for a song by a specific artist (for example, "One More Time" by Daft Punk, not "One More Time" by Britney Spears), include the artist's name.
+![Liri searching for "One More Time" by Daft Punk on Spotify](https://github.com/TerrenceMM2/coursework8-liri-node-app/blob/master/images/node_liri_spotify_artist.gif)
 
 #### `movie-this`
 Will return the top search on IMDB and its relevant stats (such as name, data of release, actors, plot summary, etc.).  
@@ -43,7 +46,7 @@ Will return the top search on IMDB and its relevant stats (such as name, data of
 #### `concert-this`
 Will return upcoming concerts from Bands in Town.
 
-#### `do-what-it-say`
+#### `do-what-it-says`
 Allows you to save storage a command and search. You must edit the `random.txt` file and include your command and search parameter. For example:
 ```spotify-this-song,Dance or Die```
 

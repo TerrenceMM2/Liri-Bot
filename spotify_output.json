@@ -1,6 +1,6 @@
 {
   "tracks": {
-    "href": "https://api.spotify.com/v1/search?query=Digital+Love&type=track&offset=0&limit=1",
+    "href": "https://api.spotify.com/v1/search?query=One+More+Time+Daft+Punk&type=track&offset=0&limit=1",
     "items": [
       {
         "album": {
@@ -219,29 +219,29 @@
           "ZA"
         ],
         "disc_number": 1,
-        "duration_ms": 301373,
+        "duration_ms": 320357,
         "explicit": false,
         "external_ids": {
-          "isrc": "GBDUW0000058"
+          "isrc": "GBDUW0000053"
         },
         "external_urls": {
-          "spotify": "https://open.spotify.com/track/2VEZx7NWsZ1D0eJ4uv5Fym"
+          "spotify": "https://open.spotify.com/track/0DiWol3AO6WpXZgp0goxAV"
         },
-        "href": "https://api.spotify.com/v1/tracks/2VEZx7NWsZ1D0eJ4uv5Fym",
-        "id": "2VEZx7NWsZ1D0eJ4uv5Fym",
+        "href": "https://api.spotify.com/v1/tracks/0DiWol3AO6WpXZgp0goxAV",
+        "id": "0DiWol3AO6WpXZgp0goxAV",
         "is_local": false,
-        "name": "Digital Love",
-        "popularity": 62,
-        "preview_url": "https://p.scdn.co/mp3-preview/7079f6d7bc465f71971454808d5039b35bd3fd2f?cid=3546f5553ae84a47840db926e7845c4b",
-        "track_number": 3,
+        "name": "One More Time",
+        "popularity": 73,
+        "preview_url": "https://p.scdn.co/mp3-preview/c27897e8eb4c0910e052c9beb6711432f3630879?cid=3546f5553ae84a47840db926e7845c4b",
+        "track_number": 1,
         "type": "track",
-        "uri": "spotify:track:2VEZx7NWsZ1D0eJ4uv5Fym"
+        "uri": "spotify:track:0DiWol3AO6WpXZgp0goxAV"
       }
     ],
     "limit": 1,
-    "next": "https://api.spotify.com/v1/search?query=Digital+Love&type=track&offset=1&limit=1",
+    "next": "https://api.spotify.com/v1/search?query=One+More+Time+Daft+Punk&type=track&offset=1&limit=1",
     "offset": 0,
     "previous": null,
-    "total": 3692
+    "total": 64
   }
 }
