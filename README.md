@@ -27,6 +27,8 @@ OMDB_KEY=<Your_OMDB_API_Key>
 ```
 
 ## Instructions  
+  
+To use liri, type `node liri` and an accompanying command.  
 Currently, Liri understands the following commands:  
 * `spotify-this-song`  
 * `movie-this`  
@@ -70,10 +72,11 @@ If no command is given, you will be prompted to choose what media type you want 
   
 ![Liri asking questions](../media/node_liri.gif?raw=true)
 
-### Packages Used
-1. [axios](https://www.npmjs.com/package/axios)  
-2. [moment](https://www.npmjs.com/package/moment)
-3. [dotenv](https://www.npmjs.com/package/dotenv)
-4. [inquirer](https://www.npmjs.com/package/inquirer)
-5. [console.table](https://www.npmjs.com/package/console.table)
-6. [node-spotify-api](https://www.npmjs.com/package/node-spotify-api)
+### Built With
+1. [node](https://nodejs.org/en/)
+2. [axios](https://www.npmjs.com/package/axios)  
+3. [moment](https://www.npmjs.com/package/moment)
+4. [dotenv](https://www.npmjs.com/package/dotenv)
+5. [inquirer](https://www.npmjs.com/package/inquirer)
+6. [console.table](https://www.npmjs.com/package/console.table)
+7. [node-spotify-api](https://www.npmjs.com/package/node-spotify-api)
