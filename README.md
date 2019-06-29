@@ -58,9 +58,9 @@ Using Liri to search Spotify for _Digital Love_ by Daft Punk:
 ![Liri searching for "Digital Love" on Spotify](https://github.com/TerrenceMM2/coursework8-liri-node-app/blob/master/images/liri_song_search.JPG)  
 
 ### Packages Used
-1. axios [axios](https://www.npmjs.com/package/axios)  
-2. moment [moment](https://www.npmjs.com/package/moment)
-3. dotenv [dotenv](https://www.npmjs.com/package/dotenv)
-4. inquirer [inquirer](https://www.npmjs.com/package/inquirer)
-5. console.table [console.table](https://www.npmjs.com/package/console.table)
-6. node-spotify-api [node-spotify-api](https://www.npmjs.com/package/node-spotify-api)
+1. [axios](https://www.npmjs.com/package/axios)  
+2. [moment](https://www.npmjs.com/package/moment)
+3. [dotenv](https://www.npmjs.com/package/dotenv)
+4. [inquirer](https://www.npmjs.com/package/inquirer)
+5. [console.table](https://www.npmjs.com/package/console.table)
+6. [node-spotify-api](https://www.npmjs.com/package/node-spotify-api)
