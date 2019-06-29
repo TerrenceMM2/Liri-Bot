@@ -12,11 +12,11 @@ Liri's purpose is to provide users up-to-date information about their favorite m
 ## Installation  
 1. Clone this repo to your local machine.  
 
-```$ git clone https://github.com/TerrenceMM2/coursework8-liri-node-app.git```  
+   ```$ git clone https://github.com/TerrenceMM2/coursework8-liri-node-app.git```  
 
 2. Run `npm install` to install the application's dependencies.  
 
-```$ npm install```  
+   ```$ npm install```  
 
 3. Obtain API Key's to the following applications:
    1. Spotify 🎧  
@@ -25,18 +25,18 @@ Liri's purpose is to provide users up-to-date information about their favorite m
 
 
 4. Create an `.env` file in the application's home directory with the following information:  
-```
-# Spotify API keys
+   ```
+   # Spotify API keys
 
-SPOTIFY_ID=<Your_Spotify_ID>
-SPOTIFY_SECRET=<Your_Spotify_API_Key>
+   SPOTIFY_ID=<Your_Spotify_ID>
+   SPOTIFY_SECRET=<Your_Spotify_API_Key>
 
-# Bands in Town API key
-BANDS_KEY=<Your_BiT_API_Key>
+   # Bands in Town API key
+   BANDS_KEY=<Your_BiT_API_Key>
 
-# OMDB API key
-OMDB_KEY=<Your_OMDB_API_Key>
-```
+   # OMDB API key
+   OMDB_KEY=<Your_OMDB_API_Key>
+   ```
 
 - - -
 
@@ -53,27 +53,27 @@ Currently, Liri understands the following commands:
 #### `spotify-this-song`  
 Will return the top search on Spotify.  
 
-```$ node liri spotify-this-song Dance or Die```  
+Ex. ```$ node liri spotify-this-song Dance or Die```  
   
 ![Liri searching for "Dance or Die" by Starcadian on Spotify](../media/node_liri_spotify.gif?raw=true)
 
 If you are looking for a song by a specific artist (for example, "One More Time" by Daft Punk, not "One More Time" by Britney Spears), include the artist's name.  
 
-```$ node liri spotify-this-song One More Time Daft Punk```  
+Ex. ```$ node liri spotify-this-song One More Time Daft Punk```  
   
 ![Liri searching for "One More Time" by Daft Punk on Spotify](../media/node_liri_spotify_artist.gif?raw=true)
 
 #### `movie-this`
 Will return the top search on IMDB and its relevant stats (such as name, data of release, actors, plot summary, etc.).  
 
-```$ node liri movie-this The Matrix```  
+Ex. ```$ node liri movie-this The Matrix```  
   
 ![Liri searching for "The Matrix" on IMDB](../media/node_liri_movie.gif?raw=true)
 
 #### `concert-this`
 Will return upcoming concerts from Bands in Town.  
 
-```$ node liri concert-this Deadmau5```
+Ex. ```$ node liri concert-this Deadmau5```
   
 ![Liri searching for Deadmau5 concerts on Bands in Town](../media/node_liri_concert.gif?raw=true)
 
@@ -82,21 +82,21 @@ Allows you to save storage a command and search. You must edit the `random.txt` 
   
 ```movie-this,Cars```  
 
-```$ node liri do-what-it-says```
+Ex. ```$ node liri do-what-it-says```
   
 ![Liri executing "do-what-it-says" command](../media/node_liri_do.gif?raw=true)
 
 #### `help`
 Will return the available commands and their correct syntax.  
 
-```$ node liri help```
+Ex. ```$ node liri help```
   
 ![Liri showing the list of available commands](../media/node_liri_help.gif?raw=true)
 
 #### Other
 If no command is given, you will be prompted to choose what media type you want to search for and the search parameter.  
 
-```$ node liri```
+Ex. ```$ node liri```
   
 ![Liri asking questions](../media/node_liri.gif?raw=true)
   
@@ -106,21 +106,15 @@ If no command is given, you will be prompted to choose what media type you want 
 
 To get started ...
 
-#### Step 1
+**Step 1**
 
-- **Option 1**
-    - 🍴 Fork this repo!
+- **Option 1** - 🍴 Fork this repo!
 
-- **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/TerrenceMM2/coursework8-liri-node-app.git`
+- **Option 2** - 👯 Clone this repo to your local machine using `https://github.com/TerrenceMM2/coursework8-liri-node-app.git`
 
-#### Step 2
+**Step 2** - **HACK AWAY!** 🔨🔨🔨
 
-- **HACK AWAY!** 🔨🔨🔨
-
-#### Step 3
-
-- 🔃 Create a new pull request using [https://github.com/TerrenceMM2/coursework8-liri-node-app/compare](https://github.com/TerrenceMM2/coursework8-liri-node-app/compare)
+**Step 3** - 🔃 Create a new pull request using [https://github.com/TerrenceMM2/coursework8-liri-node-app/compare](https://github.com/TerrenceMM2/coursework8-liri-node-app/compare)
 
 - - -
 
