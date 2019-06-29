@@ -35,10 +35,10 @@ Currently, Liri understand the following commands:
 * `help`  
 
 #### `spotify-this-song`  
-Will return the top search on Spotify.
+Will return the top search on Spotify.  
 ![Liri searching for "Dance or Die" by Starcadian on Spotify](../media/node_liri_spotify.gif?raw=true)
 
-If you are looking for a song by a specific artist (for example, "One More Time" by Daft Punk, not "One More Time" by Britney Spears), include the artist's name.
+If you are looking for a song by a specific artist (for example, "One More Time" by Daft Punk, not "One More Time" by Britney Spears), include the artist's name.  
 ![Liri searching for "One More Time" by Daft Punk on Spotify](../media/node_liri_spotify_artist.gif?raw=true)
 
 #### `movie-this`
@@ -46,20 +46,20 @@ Will return the top search on IMDB and its relevant stats (such as name, data of
 ![Liri searching for "The Matrix" on IMDB](../media/node_liri_movie.gif?raw=true)
 
 #### `concert-this`
-Will return upcoming concerts from Bands in Town.
+Will return upcoming concerts from Bands in Town.  
 ![Liri searching for Deadmau5 concerts on Bands in Town](../media/node_liri_concert.gif?raw=true)
 
 #### `do-what-it-says`
 Allows you to save storage a command and search. You must edit the `random.txt` file and include your command and search parameter. For example:
-```spotify-this-song,Dance or Die```
+```movie-this-,Cars```  
 ![Liri executing "do-what-it-says" command](../media/node_liri_do.gif?raw=true)
 
 #### `help`
 Will return the available commands and their correct syntax.  
-![Liri showing the list of available commands](../media/node_liri_help.gif?raw=true | width=600)
+![Liri showing the list of available commands](../media/node_liri_help.gif?raw=true)
 
 #### Other
-If no command is given, you will be prompted to choose what media type you want to search for and the search parameter.
+If no command is given, you will be prompted to choose what media type you want to search for and the search parameter.  
 ![Liri asking questions](../media/node_liri.gif?raw=true)
 
 ## Screenshots/GIFs  
