@@ -27,7 +27,7 @@ OMDB_KEY=<Your_OMDB_API_Key>
 ```
 
 ## Instructions  
-Currently, Liri understand the following commands:  
+Currently, Liri understands the following commands:  
 * `spotify-this-song`  
 * `movie-this`  
 * `concert-this`  
