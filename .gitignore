@@ -1,7 +1,5 @@
 node_modules
 .DS_Store
 .env
-spotify_output.json
-bands_output.json
-omdb_output.json
 log.txt
+*.json
