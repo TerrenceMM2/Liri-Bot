@@ -1,6 +1,7 @@
 # Liri Bot  
 _coursework8-liri-node-app_  
 Vanderbilt Coding Boot Camp - Coursework8 - Liri Node.JS App  
+<img align="right" width="100" height="100" src="https://cdn.pixabay.com/photo/2018/05/15/20/47/microphone-3404243_960_720.png" >
 
 - - -
 
