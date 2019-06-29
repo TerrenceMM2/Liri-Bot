@@ -34,8 +34,33 @@ Currently, Liri understand the following commands:
 * `do-what-it-says`  
 * `help`  
 
-### `spotify-this-song`  
+#### `spotify-this-song`  
+Will return the top search on Spotify. If you are looking for a song by a specific artist (for example, "One More Time" by Daft Punk, not "One More Time" by Britney Spears), include the artist's name.
+
+#### `movie-this`
+Will return the top search on IMDB and its relevant stats (such as name, data of release, actors, plot summary, etc.).  
+
+#### `concert-this`
+Will return upcoming concerts from Bands in Town.
+
+#### `do-what-it-say`
+Allows you to save storage a command and search. You must edit the `random.txt` file and include your command and search parameter. For example:
+```spotify-this-song,Dance or Die```
+
+#### `help`
+Will return the available commands and their correct syntax.  
+
+#### Other
+If no command is given, you will be prompted to choose what media type you want to search for and the search parameter.
 
 ## Screenshots/GIFs  
 Using Liri to search Spotify for _Digital Love_ by Daft Punk:  
 ![Liri searching for "Digital Love" on Spotify](https://github.com/TerrenceMM2/coursework8-liri-node-app/blob/master/images/liri_song_search.JPG)  
+
+### Packages Used
+1. axios [axios](https://www.npmjs.com/package/axios)  
+2. moment [moment](https://www.npmjs.com/package/moment)
+3. dotenv [dotenv](https://www.npmjs.com/package/dotenv)
+4. inquirer [inquirer](https://www.npmjs.com/package/inquirer)
+5. console.table [console.table](https://www.npmjs.com/package/console.table)
+6. node-spotify-api [node-spotify-api](https://www.npmjs.com/package/node-spotify-api)
