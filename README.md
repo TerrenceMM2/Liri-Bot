@@ -36,15 +36,18 @@ Currently, Liri understand the following commands:
 
 #### `spotify-this-song`  
 Will return the top search on Spotify.
+![Liri searching for "Dance or Die" by Starcadian on Spotify](../media/node_liri_spotify.gif?raw=true)
 
 If you are looking for a song by a specific artist (for example, "One More Time" by Daft Punk, not "One More Time" by Britney Spears), include the artist's name.
 ![Liri searching for "One More Time" by Daft Punk on Spotify](../media/node_liri_spotify_artist.gif?raw=true)
 
 #### `movie-this`
 Will return the top search on IMDB and its relevant stats (such as name, data of release, actors, plot summary, etc.).  
+![Liri searching for "The Matrix" on IMDB](../media/node_liri_movie.gif?raw=true)
 
 #### `concert-this`
 Will return upcoming concerts from Bands in Town.
+![Liri searching for Deadmau5 concerts on Bands in Town](../media/node_liri_concert.gif?raw=true)
 
 #### `do-what-it-says`
 Allows you to save storage a command and search. You must edit the `random.txt` file and include your command and search parameter. For example:
@@ -53,6 +56,7 @@ Allows you to save storage a command and search. You must edit the `random.txt` 
 
 #### `help`
 Will return the available commands and their correct syntax.  
+![Liri showing the list of available commands](../media/node_liri_help.gif?raw=true | width=600)
 
 #### Other
 If no command is given, you will be prompted to choose what media type you want to search for and the search parameter.

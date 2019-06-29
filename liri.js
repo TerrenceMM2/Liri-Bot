@@ -94,7 +94,7 @@ function liriCommand(command) {
             break;
         case "help":
             console.log("==================================== AVAILABLE COMMANDS ====================================");
-            console.log("'concert-this' - Search Band in Town concerts by artist/group.");
+            console.log("'concert-this' - Search Bands in Town concerts by artist/group.");
             console.log("'spotify-this-song' - Search Spotify for track information.");
             console.log("'movie-this' - Search IMDB for movie information.");
             console.log("'do-what-it-says' - Reads and passes command and value from random.txt file.");
