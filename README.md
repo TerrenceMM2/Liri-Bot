@@ -38,7 +38,7 @@ Currently, Liri understand the following commands:
 Will return the top search on Spotify.
 
 If you are looking for a song by a specific artist (for example, "One More Time" by Daft Punk, not "One More Time" by Britney Spears), include the artist's name.
-![Liri searching for "One More Time" by Daft Punk on Spotify](https://github.com/TerrenceMM2/coursework8-liri-node-app/blob/master/images/node_liri_spotify_artist.gif)
+![Liri searching for "One More Time" by Daft Punk on Spotify](../media/node_liri_spotify_artist.gif?raw=true)
 
 #### `movie-this`
 Will return the top search on IMDB and its relevant stats (such as name, data of release, actors, plot summary, etc.).  
@@ -49,16 +49,18 @@ Will return upcoming concerts from Bands in Town.
 #### `do-what-it-says`
 Allows you to save storage a command and search. You must edit the `random.txt` file and include your command and search parameter. For example:
 ```spotify-this-song,Dance or Die```
+![Liri executing "do-what-it-says" command](../media/node_liri_do.gif?raw=true)
 
 #### `help`
 Will return the available commands and their correct syntax.  
 
 #### Other
 If no command is given, you will be prompted to choose what media type you want to search for and the search parameter.
+![Liri asking questions](../media/node_liri.gif?raw=true)
 
 ## Screenshots/GIFs  
 Using Liri to search Spotify for _Digital Love_ by Daft Punk:  
-![Liri searching for "Digital Love" on Spotify](https://github.com/TerrenceMM2/coursework8-liri-node-app/blob/master/images/liri_song_search.JPG)  
+![Liri searching for "Digital Love" on Spotify]
 
 ### Packages Used
 1. [axios](https://www.npmjs.com/package/axios)  
