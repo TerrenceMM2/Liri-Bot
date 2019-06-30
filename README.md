@@ -98,7 +98,10 @@ If no command is given, you will be prompted to choose what media type you want 
 
 > ```$ node liri```
   
-![Liri asking questions](../media/node_liri.gif?raw=true)
+![Liri asking questions](../media/node_liri.gif?raw=true)  
+
+#### Logging  
+A `log.txt` files contains all search history information and results, complete with timestamp, the command called, and the search parameter.
   
 - - -
 
