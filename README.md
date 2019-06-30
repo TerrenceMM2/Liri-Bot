@@ -64,21 +64,21 @@ If you are looking for a song by a specific artist (for example, "One More Time"
 ![Liri searching for "One More Time" by Daft Punk on Spotify](../media/node_liri_spotify_artist.gif?raw=true)
 
 #### `movie-this`
-Will return the top search on IMDB and its relevant stats (such as name, data of release, actors, plot summary, etc.).  
+Will return the top result on IMDB and select information (such as name, data of release, actors, plot summary, etc.).  
 
 > ```$ node liri movie-this The Matrix```  
   
 ![Liri searching for "The Matrix" on IMDB](../media/node_liri_movie.gif?raw=true)
 
 #### `concert-this`
-Will return upcoming concerts from Bands in Town.  
+Will return input artist/group upcoming concerts from Bands in Town.  
 
 > ```$ node liri concert-this Deadmau5```
   
 ![Liri searching for Deadmau5 concerts on Bands in Town](../media/node_liri_concert.gif?raw=true)
 
 #### `do-what-it-says`
-Allows you to save storage a command and search. You must edit the `random.txt` file and include your command and search parameter. For example:
+Allows you to save a command and search parameter. You must edit the `random.txt` file and include your command and search parameter. For example:
   
 ```movie-this,Cars```  
 
