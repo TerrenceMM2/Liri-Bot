@@ -53,27 +53,27 @@ Currently, Liri understands the following commands:
 #### `spotify-this-song`  
 Will return the top search on Spotify.  
 
-Ex. ```$ node liri spotify-this-song Dance or Die```  
+> ```$ node liri spotify-this-song Dance or Die```  
   
 ![Liri searching for "Dance or Die" by Starcadian on Spotify](../media/node_liri_spotify.gif?raw=true)
 
 If you are looking for a song by a specific artist (for example, "One More Time" by Daft Punk, not "One More Time" by Britney Spears), include the artist's name.  
 
-Ex. ```$ node liri spotify-this-song One More Time Daft Punk```  
+> ```$ node liri spotify-this-song One More Time Daft Punk```  
   
 ![Liri searching for "One More Time" by Daft Punk on Spotify](../media/node_liri_spotify_artist.gif?raw=true)
 
 #### `movie-this`
 Will return the top search on IMDB and its relevant stats (such as name, data of release, actors, plot summary, etc.).  
 
-Ex. ```$ node liri movie-this The Matrix```  
+> ```$ node liri movie-this The Matrix```  
   
 ![Liri searching for "The Matrix" on IMDB](../media/node_liri_movie.gif?raw=true)
 
 #### `concert-this`
 Will return upcoming concerts from Bands in Town.  
 
-Ex. ```$ node liri concert-this Deadmau5```
+> ```$ node liri concert-this Deadmau5```
   
 ![Liri searching for Deadmau5 concerts on Bands in Town](../media/node_liri_concert.gif?raw=true)
 
@@ -82,21 +82,21 @@ Allows you to save storage a command and search. You must edit the `random.txt` 
   
 ```movie-this,Cars```  
 
-Ex. ```$ node liri do-what-it-says```
+> ```$ node liri do-what-it-says```
   
 ![Liri executing "do-what-it-says" command](../media/node_liri_do.gif?raw=true)
 
 #### `help`
 Will return the available commands and their correct syntax.  
 
-Ex. ```$ node liri help```
+> ```$ node liri help```
   
 ![Liri showing the list of available commands](../media/node_liri_help.gif?raw=true)
 
 #### Other
 If no command is given, you will be prompted to choose what media type you want to search for and the search parameter.  
 
-Ex. ```$ node liri```
+> ```$ node liri```
   
 ![Liri asking questions](../media/node_liri.gif?raw=true)
   
