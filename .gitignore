@@ -2,5 +2,7 @@ node_modules
 .DS_Store
 .env
 log.txt
-*.json
+spotify_output.json
+omdb_output.json
+bands_output.json
 homework_instructions.md
